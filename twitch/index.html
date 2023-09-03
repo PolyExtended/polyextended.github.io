@@ -135,7 +135,7 @@
         // Function to fetch Twitch OAuth URL
         function getTwitchOAuthURL() {
             const clientId = 'nleem86uw7la0kz1wblgo57bpwzlqt'; // Replace with your Twitch OAuth client ID
-            const redirectUri = 'https://polyextended.github.io/twitch/'; // Replace with your redirect URI
+            const redirectUri = 'https://polyextended.github.io/twitch/redirect.html'; // Replace with your redirect URI
             const scope = 'user_read'; // Specify the required scope
 
             return `https://id.twitch.tv/oauth2/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=token&scope=${scope}`;
