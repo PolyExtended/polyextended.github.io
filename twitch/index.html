@@ -56,7 +56,7 @@
  
     <div class="container mt-4">
         <!-- Display the Twitch OAuth button -->
-        <button id="twitchOAuthButton" class="btn btn-primary">Login With Twitch</button>
+        <a href="#" id="twitchOAuthButton" class="btn btn-primary">Login With Twitch</a>
         <div class="card-container" id="emoteContainer">
             <!-- Emotes will be displayed here -->
         </div>
@@ -148,7 +148,6 @@
         });
 
         // Check for Twitch OAuth token in the URL
-        
         const urlParams = new URLSearchParams(window.location.search);
         const twitchOAuthToken = urlParams.get('access_token');
 
@@ -156,8 +155,8 @@
             // The user has successfully logged in with Twitch OAuth
             // You can perform any necessary actions here
             
-            // Example: Fetch emotes for a specific channel (replace 'CHANNEL_NAME' with the channel name)
-            const channelName = 'CHANNEL_NAME';
+            // Example: Fetch emotes for the dynamically specified channel
+            const channelName = '${channel}'; // Replace with the actual channel name
             fetchEmotes(channelName)
                 .then(emotes => displayEmotes(emotes))
                 .catch(error => console.error('Error fetching emotes:', error));
