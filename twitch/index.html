@@ -34,6 +34,11 @@
             width: 26%;
             height: auto;
         }
+
+        /* Hide the Twitch OAuth button by default */
+        #twitchOAuthButton {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -50,6 +55,7 @@
     </header>
  
     <div class="container mt-4">
+        <!-- Display the Twitch OAuth button -->
         <button id="twitchOAuthButton" class="btn btn-primary">Login With Twitch</button>
         <div class="card-container" id="emoteContainer">
             <!-- Emotes will be displayed here -->
@@ -154,6 +160,9 @@
             fetchEmotes(channelName)
                 .then(emotes => displayEmotes(emotes))
                 .catch(error => console.error('Error fetching emotes:', error));
+        } else {
+            // Display the Twitch OAuth button if the user is not logged in
+            document.getElementById('twitchOAuthButton').style.display = 'block';
         }
     </script>
 </body>
