@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>PolyExtend - Twitch</title>
+    <title>PolyDev - Twitch</title>
     <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,10 +34,8 @@
             width: 26%;
             height: auto;
         }
-
-        /* Hide the Twitch OAuth button by default */
-        #twitchOAuthButton {
-            display: none;
+        img{
+            height: 38px; padding: 12px 0;
         }
     </style>
 </head>
@@ -46,28 +44,38 @@
         <nav class="z-depth-0 backer-dark">
             <div class="nav-wrapper container">
                 <ul class="left">
-                    <li class="active"><a href="https://polyextended.github.io/">Home</a></li>
-                    <li><a href="https://polyextended.github.io/streamlookup/">StreamLookup</a></li>
-                    <li><a href="https://polyextended.github.io/twitch/">Twitch</a></li>
+                    <li class="active"><a href="/"><img src="/images/dev-white.png" style="height: 50px; width: 50px; padding: 12px 0;"></a></li>
+                    <li><a href="/extend/">PolyExtend</a></li>
+                    <li><a href="https://bit.ly/StreamLookup/">StreamLookup</a></li>
+                    <!-- Add Twitch OAuth button here -->
+                    <li><a href="https://polyextended.github.io/twitch/">Login with Twitch</a></li>
                 </ul>
             </div>
         </nav>
-    </header>
  
-    <div class="container mt-4">
-        <!-- Display the Twitch OAuth button -->
-        <a href="#" id="twitchOAuthButton" class="btn btn-primary">Login With Twitch</a>
-        <div class="card-container" id="emoteContainer">
-            <!-- Emotes will be displayed here -->
+        <div class="container mt-4">
+            <!-- Bootstrap form component -->
+            <form id="channelLookupForm" class="mb-4">
+                <div class="mb-3">
+                    <label for="inputField" class="form-label">Enter Channel Name:</label>
+                    <input type="text" class="form-control" id="inputField" name="user_input" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            
+            <div class="card-container" id="emoteContainer">
+                <!-- Emotes will be displayed here -->
+            </div>
         </div>
-    </div>
-
+    </main>
+    
     <footer class="container section grey-text center-align">
-        &copy; 2016 <a href="https://github.com/PolyExtended">PolyDev</a>
+        &copy; 2016 PolyDev
     </footer>
     
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
+
     <script>
         // Function to fetch emotes
         function fetchEmotes(channel) {
@@ -163,6 +171,32 @@
         } else {
             // Display the Twitch OAuth button if the user is not logged in
             document.getElementById('twitchOAuthButton').style.display = 'block';
+        }
+    </script>
+
+    <script>
+        // Function to extract access token from the URL
+        function getAccessTokenFromURL() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('access_token');
+        }
+
+        // Check if the access token is present in the URL
+        const accessToken = getAccessTokenFromURL();
+
+        if (accessToken) {
+            // The access token is available in the URL
+            // You can now use it for further actions
+            // For example, you can store it in local storage or perform API requests
+            console.log('Access token:', accessToken);
+
+            // After handling the access token, you can redirect the user to another page
+            // In this case, let's redirect back to your main page
+            window.location.href = 'https://polyextended.github.io/twitch/index.html';
+        } else {
+            // The access token is not present in the URL
+            // You may want to display an error message or take appropriate action
+            console.error('Access token not found in the URL');
         }
     </script>
 </body>
