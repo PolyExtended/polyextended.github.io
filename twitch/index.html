@@ -48,21 +48,12 @@
                     <li><a href="/extend/">PolyExtend</a></li>
                     <li><a href="https://bit.ly/StreamLookup/">StreamLookup</a></li>
                     <!-- Add Twitch OAuth button here -->
-                    <li><a href="https://polyextended.github.io/twitch/">Login with Twitch</a></li>
+                    <li><a href="https://polyextended.github.io/twitch/redirect.html" id="twitchOAuthButton">Login with Twitch</a></li>
                 </ul>
             </div>
         </nav>
  
         <div class="container mt-4">
-            <!-- Bootstrap form component -->
-            <form id="channelLookupForm" class="mb-4">
-                <div class="mb-3">
-                    <label for="inputField" class="form-label">Enter Channel Name:</label>
-                    <input type="text" class="form-control" id="inputField" name="user_input" required>
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-            
             <div class="card-container" id="emoteContainer">
                 <!-- Emotes will be displayed here -->
             </div>
@@ -164,7 +155,7 @@
             // You can perform any necessary actions here
             
             // Example: Fetch emotes for the dynamically specified channel
-            const channelName = '${channel}'; // Replace with the actual channel name
+            const channelName = 'YOUR_CHANNEL_NAME'; // Replace with the actual channel name
             fetchEmotes(channelName)
                 .then(emotes => displayEmotes(emotes))
                 .catch(error => console.error('Error fetching emotes:', error));
