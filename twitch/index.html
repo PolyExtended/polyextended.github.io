@@ -1,1 +1,173 @@
-// ... (Your existing code to display emotes remains the same) ...
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>PolyDev</title>
+    <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <style>
+        a {
+            color: #15ebd2;
+        }
+        
+        .backer {
+            background: #15ebd2;
+        }
+        
+        .backer-dark {
+            background: #12d0b9;
+        }
+
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .card {
+            width: 11rem;
+            /* Add other card styling here */
+        }
+
+        .card img {
+            width: 26%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <header class="z-depth-1">
+        <nav class="z-depth-0 backer-dark">
+            <div class="nav-wrapper container">
+                <ul class="left">
+                    <li class="active"><a href="/"><img src="/images/dev-white.png" style="height: 100%; padding: 12px 0;"></a></li>
+                    <li><a href="/extend/">PolyExtend</a></li>
+                    <li><a href="/bot/">PolyBot</a></li>
+                    <li><a href="/streamlookup/">StreamLookup</a></li>
+                    <li><a href="//link.polydev.ml/">StreamLink</a></li>
+                </ul>
+            </div>
+        </nav>
+ 
+        
+        <div class="container mt-4">
+            <!-- Bootstrap form component -->
+            <form id="channelLookupForm" class="mb-4">
+                <div class="mb-3">
+                    <label for="inputField" class="form-label">Enter Channel Name:</label>
+                    <input type="text" class="form-control" id="inputField" name="user_input" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            
+            <div class="card-container" id="emoteContainer">
+                <!-- Emotes will be displayed here -->
+            </div>
+        </div>
+    </main>
+    
+    <footer class="container section grey-text center-align">
+        &copy; 2016 PolyDev
+    </footer>
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
+<script>
+    // Function to fetch emotes
+    function fetchEmotes(channel) {
+        const api_url = `https://emotes.adamcy.pl/v1/channel/${channel}/emotes/all`;
+
+        return fetch(api_url)
+            .then(response => response.json())
+            .then(data => data)
+            .catch(error => {
+                console.error('Error fetching data:', error);
+                return [];
+            });
+    }
+
+    // Function to display emotes
+    function displayEmotes(emotes) {
+        const emoteContainer = document.getElementById('emoteContainer');
+        emoteContainer.innerHTML = '';
+
+        emotes.forEach(emote => {
+            const card = document.createElement('div');
+            card.className = 'card';
+
+            const img = document.createElement('img');
+            img.src = emote.urls[0].url;
+            img.alt = emote.code;
+
+            const cardBody = document.createElement('div');
+            cardBody.className = 'card-body';
+
+            const cardText = document.createElement('p');
+            cardText.className = 'card-text';
+            cardText.textContent = emote.code;
+
+            cardBody.appendChild(cardText);
+
+            if (emote.provider === 1) {
+                const providerText = document.createElement('p');
+                providerText.className = 'card-text';
+                providerText.innerHTML = `From: <a href="https://bit.ly/Bacon7TV" target="_blank">SevenTV</a>`;
+                cardBody.appendChild(providerText);
+            } else if (emote.provider === 2) {
+                const providerText = document.createElement('p');
+                providerText.className = 'card-text';
+                providerText.innerHTML = `From: <a href="https://bit.ly/BaconBTTV" target="_blank">BetterTwitchTV</a>`;
+                cardBody.appendChild(providerText);
+            } else if (emote.provider === 3) {
+                const providerText = document.createElement('p');
+                providerText.className = 'card-text';
+                providerText.innerHTML = `From: <a href="https://bit.ly/BaconFFZ" target="_blank">FrankerFaceZ</a>`;
+                cardBody.appendChild(providerText);
+            } else {
+                const providerText = document.createElement('p');
+                providerText.className = 'card-text';
+                providerText.innerHTML = `From: <a href="https://twitch.tv/${channel}" target="_blank">Twitch</a>`;
+                cardBody.appendChild(providerText);
+            }
+
+            card.appendChild(img);
+            card.appendChild(cardBody);
+            emoteContainer.appendChild(card);
+        });
+    }
+
+    // Function to fetch Twitch OAuth URL
+    function getTwitchOAuthURL() {
+        const clientId = 'YOUR_TWITCH_CLIENT_ID'; // Replace with your Twitch OAuth client ID
+        const redirectUri = 'YOUR_REDIRECT_URI'; // Replace with your redirect URI
+        const scope = 'user_read'; // Specify the required scope
+
+        return `https://id.twitch.tv/oauth2/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=token&scope=${scope}`;
+    }
+
+    // Twitch OAuth button click event handler
+    document.getElementById('twitchOAuthButton').addEventListener('click', function () {
+        // Redirect the user to the Twitch OAuth page
+        window.location.href = getTwitchOAuthURL();
+    });
+
+    // Check for Twitch OAuth token in the URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const twitchOAuthToken = urlParams.get('access_token');
+
+    if (twitchOAuthToken) {
+        // The user has successfully logged in with Twitch OAuth
+        // You can perform any necessary actions here
+        
+        // Example: Fetch emotes for a specific channel (replace 'CHANNEL_NAME' with the channel name)
+        const channelName = 'CHANNEL_NAME';
+        fetchEmotes(channelName)
+            .then(emotes => displayEmotes(emotes))
+            .catch(error => console.error('Error fetching emotes:', error));
+    }
+</script>
+
+
+</body>
+</html>
