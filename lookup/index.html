@@ -47,6 +47,7 @@
                     <li class="active"><a href="/"><img src="/images/dev-white.png" style="height: 50px; width: 50px; padding: 12px 0;"></a></li>
                     <li><a href="/extend/">PolyExtend</a></li>
                     <li><a href="https://bit.ly/StreamLookup/">StreamLookup</a></li>
+                    <li><a href="https://polyextended.github.io/lookup/">Lookup</a></li>
                 </ul>
             </div>
         </nav>
@@ -59,7 +60,7 @@
                 <label for="inputField" class="form-label">Enter Channel Name:</label>
                 <input type="text" class="form-control" id="inputField" name="user_input" required>
             </div>
-            <button type="submit" class="btn btn-primary" style="display: none;"></button>
+            <button type="submit" class="btn btn-primary">Submit</button>
         </form>
         
         <div class="card-container" id="emoteContainer">
@@ -86,7 +87,9 @@
         var userName = getUrlParameter('user');
         if (userName) {
             document.getElementById('inputField').value = userName;
-            document.getElementById('channelLookupForm').style.display = 'block'; // Show the form
+
+            // Automatically submit the form when userName is present in the URL
+            document.getElementById('channelLookupForm').submit();
         }
 
         document.getElementById('channelLookupForm').addEventListener('submit', function(event) {
@@ -146,13 +149,6 @@
                     });
                 })
                 .catch(error => console.error('Error fetching data:', error));
-        });
-
-        // Submit the form when Enter key is pressed in the input field
-        document.getElementById('inputField').addEventListener('keyup', function(event) {
-            if (event.key === 'Enter') {
-                document.getElementById('channelLookupForm').submit();
-            }
         });
     </script>
 </body>
