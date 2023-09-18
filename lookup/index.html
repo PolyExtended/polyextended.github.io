@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>PolyDev - StreamLookup</title>
+    <title>PolyDev - Lookup</title>
     <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -102,7 +102,7 @@
 
         // Function to handle form submission
         function submitForm() {
-            const channel = document.getElementById('inputField').value;
+            const channel = encodeURIComponent(document.getElementById('inputField').value); // Encode the username
             const api_url = `https://emotes.adamcy.pl/v1/channel/${channel}/emotes/all`;
 
             fetch(api_url)
