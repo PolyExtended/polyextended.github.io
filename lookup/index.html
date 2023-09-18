@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>PolyDev - Lookup</title>
+    <title>PolyDev - StreamLookup</title>
     <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -57,13 +57,25 @@
         <form id="channelLookupForm" class="mb-4">
             <div class="mb-3">
                 <label for="inputField" class="form-label">Enter Channel Name:</label>
-                <input type="text" class="form-control" id="inputField" name="user_input" required>
+                <div class="input-group">
+                    <span class="input-group-text">?user=</span>
+                    <input type="text" class="form-control" id="inputField" name="user_input" required>
+                </div>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
         
         <div class="card-container" id="emoteContainer">
             <!-- Emotes will be displayed here -->
+        </div>
+
+        <!-- Display the URL with the entered username -->
+        <div id="urlOutput" style="display: none;">
+            <label for="copyUrl">Copy the URL:</label>
+            <div class="input-group">
+                <input type="text" class="form-control" id="copyUrl" readonly>
+                <button class="btn btn-primary" onclick="copyUrlToClipboard()">Copy</button>
+            </div>
         </div>
     </div>
     
@@ -143,6 +155,11 @@
                         card.appendChild(cardBody);
                         emoteContainer.appendChild(card);
                     });
+
+                    // Display the URL with the entered username
+                    const copyUrl = document.getElementById('copyUrl');
+                    copyUrl.value = window.location.origin + window.location.pathname + `?user=${channel}`;
+                    document.getElementById('urlOutput').style.display = 'block';
                 })
                 .catch(error => console.error('Error fetching data:', error));
         }
@@ -159,6 +176,13 @@
             event.preventDefault();
             submitForm();
         });
+
+        // Function to copy URL to clipboard
+        function copyUrlToClipboard() {
+            const copyUrl = document.getElementById('copyUrl');
+            copyUrl.select();
+            document.execCommand('copy');
+        }
     </script>
 </body>
 </html>
