@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>PolyDev - StreamLookup</title>
+    <title>PolyDev - Lookup</title>
     <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -47,7 +47,6 @@
                     <li class="active"><a href="/"><img src="/images/dev-white.png" style="height: 50px; width: 50px; padding: 12px 0;"></a></li>
                     <li><a href="/extend/">PolyExtend</a></li>
                     <li><a href="https://bit.ly/StreamLookup/">StreamLookup</a></li>
-                    <li><a href="https://polyextended.github.io/lookup/">Lookup</a></li>
                 </ul>
             </div>
         </nav>
@@ -87,13 +86,10 @@
         var userName = getUrlParameter('user');
         if (userName) {
             document.getElementById('inputField').value = userName;
-
-            // Automatically submit the form when userName is present in the URL
-            document.getElementById('channelLookupForm').submit();
         }
 
-        document.getElementById('channelLookupForm').addEventListener('submit', function(event) {
-            event.preventDefault();
+        // Function to handle form submission
+        function submitForm() {
             const channel = document.getElementById('inputField').value;
             const api_url = `https://emotes.adamcy.pl/v1/channel/${channel}/emotes/all`;
 
@@ -149,6 +145,19 @@
                     });
                 })
                 .catch(error => console.error('Error fetching data:', error));
+        }
+
+        // Submit the form when Enter key is pressed in the input field
+        document.getElementById('inputField').addEventListener('keyup', function(event) {
+            if (event.key === 'Enter') {
+                submitForm();
+            }
+        });
+
+        // Handle form submission when the submit button is clicked
+        document.getElementById('channelLookupForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            submitForm();
         });
     </script>
 </body>
