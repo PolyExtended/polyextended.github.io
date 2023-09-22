@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live on Twitch</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <!-- Include Noty.css -->
+    <link rel="stylesheet" href="noty.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <form id="twitchUsernameForm">
+                    <div class="mb-3">
+                        <label for="twitchUsername" class="form-label">Enter Twitch Username</label>
+                        <input type="text" class="form-control" id="twitchUsername" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Check Live Status</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+    <!-- Include Noty.js -->
+    <script src="noty.js"></script>
+
+    <!-- JavaScript to check Twitch status and show Noty notification -->
+    <script>
+        // Function to check if the streamer is live on Twitch
+        function checkLiveStatus() {
+            const twitchUsername = document.getElementById('twitchUsername').value;
+
+            // Replace with your Twitch Client ID
+            const clientId = '2oag632o0mp6n85h3mismr2ocsa1jip';
+
+            // Make a request to the Twitch API
+            fetch(`https://api.twitch.tv/helix/streams?user_login=${twitchUsername}`, {
+                method: 'GET',
+                headers: {
+                    'Client-ID': clientId,
+                    'Authorization': 'Bearer 62ly1aqjnymr30sn6yga5xpxuo4yi9' // Replace with your access token
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.data.length > 0) {
+                    // Streamer is live, get the game they are playing
+                    const gameId = data.data[0].game_id;
+                    getGameName(gameId, twitchUsername);
+                } else {
+                    // Streamer is not live
+                    showNotyNotification(`${twitchUsername} is not live on Twitch at the moment.`, 'error');
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching Twitch data:', error);
+            });
+        }
+
+        // Function to get the game name based on game ID
+        function getGameName(gameId, twitchUsername) {
+            // Replace with your Twitch Client ID
+            const clientId = '2oag632o0mp6n85h3mismr2ocsa1jip';
+
+            // Make a request to the Twitch API to get game information
+            fetch(`https://api.twitch.tv/helix/games?id=${gameId}`, {
+                method: 'GET',
+                headers: {
+                    'Client-ID': clientId,
+                    'Authorization': 'Bearer 62ly1aqjnymr30sn6yga5xpxuo4yi9' // Replace with your access token
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.data.length > 0) {
+                    const gameName = data.data[0].name;
+                    // Streamer is live, show the Noty notification with the game name
+                    showNotyNotification(`${twitchUsername} is Now Live On Twitch - Playing ${gameName}`, 'success');
+                } else {
+                    // Game information not available
+                    showNotyNotification(`${twitchUsername} is Now Live On Twitch`, 'warning');
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching Twitch game data:', error);
+            });
+        }
+
+        // Function to show Noty notification
+        function showNotyNotification(text, type) {
+            new Noty({
+                text: text,
+                type: type,
+                theme: 'sunset', // GTA theme
+                layout: 'topRight', // Notification position
+                timeout: 5000 // Notification timeout (ms)
+            }).show();
+        }
+
+        // Attach form submit event
+        document.getElementById('twitchUsernameForm').addEventListener('submit', function (e) {
+            e.preventDefault(); // Prevent form submission
+            checkLiveStatus();
+        });
+    </script>
+
+</body>
+</html>
