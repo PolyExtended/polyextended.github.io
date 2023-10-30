@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Poly - Chat</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="icon" type="image/x-icon" href="default-favicon.ico" id="favicon">
+  <meta name="twitter:image" content="default-image-url.png" id="twitter-image">
+    <script>
+       // Fetch the PolyExtended user's avatar from GitHub API
+        fetch('https://api.github.com/users/PolyExtended')
+            .then(response => response.json())
+            .then(data => {
+                // Extract the avatar URL from the API response
+                const avatarUrl = data.avatar_url;
+                const twitterImage = document.getElementById('twitter-image');
+                twitterImage.content = avatarUrl;
+                // Update the href attribute of the favicon link
+                const favicon = document.getElementById('favicon');
+                favicon.href = avatarUrl;
+            })
+            .catch(error => {
+                console.error('Error fetching avatar:', error);
+            });
+    </script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/5.0.0/css/bootstrap.min.css">
+    <style>
+        /* Your CSS styles for the overlay go here */
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+        #chat-container {
+            width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 2px solid #00f;
+            border-radius: 5px;
+        }
+        #chat-messages {
+            list-style: none;
+            padding: 0;
+        }
+        #chat-messages li {
+            margin: 5px 0;
+        }
+        .label-danger {
+            color: red;
+            font-weight: bold;
+        }
+        .label-grey {
+            color: grey;
+        }
+        img.emote {
+            max-width: 28px;
+            max-height: 28px;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <form>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" id="user-input" placeholder="Enter username" name="user">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
+
+    <div id="chat-container" class="container">
+        <ul id="chat-messages"></ul>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://thebaconspace.github.io/stream/tmi.js"></script>
+    <script>
+        const chatContainer = document.getElementById('chat-container');
+        const chatMessages = document.getElementById('chat-messages');
+
+        const client = new tmi.Client({
+            connection: { secure: true, reconnect: true },
+            channels: [], // Will be updated dynamically
+        });
+
+        // Function to fetch emote data and update the UI
+        async function fetchEmoteData(channel) {
+            try {
+                const emoteDataResponse = await fetch(`https://emotes.adamcy.pl/v1/channel/${channel}/emotes/all`);
+                const emoteData = await emoteDataResponse.json();
+                return emoteData;
+            } catch (error) {
+                console.error('Error fetching emote data:', error);
+                return null;
+            }
+        }
+
+        // Initialize the overlay
+        async function initializeOverlay(channel) {
+            const emoteData = await fetchEmoteData(channel);
+
+            if (emoteData) {
+                client.channels = [channel];
+                client.connect();
+
+                client.on('message', (channel, userstate, message, self) => {
+                    // Replace emote codes in the message with emote images
+                    const messageWithEmotes = parseEmotes(message, emoteData);
+
+                    // Check if the user is "Bacon_Space"
+                    const isAdmin = userstate.username === 'Bacon_Space';
+
+                    // Check if the user is a known bot (replace 'botUsername' with the actual username of known bots)
+                    const isBot = userstate.username === 'botUsername';
+
+                    // Define label classes
+                    const labelClass = isAdmin ? 'label-danger' : (isBot ? 'label-grey' : '');
+
+                    // Construct the message with labels
+                    const userLabel = isAdmin ? 'Admin' : (isBot ? 'Bot' : ''); // Label text
+
+                    // Display the message in your overlay with special styling and labels
+                    const li = document.createElement('li');
+                    li.innerHTML = `<span class="${labelClass}">${userstate.username}: ${messageWithEmotes}</span>`;
+                    chatMessages.appendChild(li);
+                });
+            }
+        }
+
+        // Add an event listener to the form
+        document.querySelector('form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const userInput = document.getElementById('user-input').value;
+            if (userInput) {
+                // Clear existing messages
+                chatMessages.innerHTML = '';
+                // Initialize the overlay with the user's input as the channel
+                initializeOverlay(userInput);
+            }
+        });
+
+        // Initialize the overlay with an empty channel (for initial page load)
+        initializeOverlay('');
+    </script>
+</body>
+</html>
