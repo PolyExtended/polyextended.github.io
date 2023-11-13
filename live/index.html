@@ -11,6 +11,9 @@
 <link rel="stylesheet" href="https://thecursedgroup.github.io/css/gtatheme.css">
       <link rel="icon" type="image/x-icon" href="default-favicon.ico" id="favicon">
   <meta name="twitter:image" content="default-image-url.png" id="twitter-image">
+   <!-- Include Simple Notify JavaScript and CSS -->
+    <script src="https://thecursedgroup.github.io/joke/dad/noty.js"></script>
+    <link href="https://thecursedgroup.github.io/joke/dad/poly.css" rel="stylesheet">
     <script>
        // Fetch the PolyExtended user's avatar from GitHub API
         fetch('https://api.github.com/users/PolyExtended')
@@ -106,10 +109,38 @@
                 if (data.data.length > 0) {
                     const gameName = data.data[0].name;
                     // Streamer is live, show the Noty notification with the game name
-                    showNotyNotification(`${twitchUsername} is Now Live On Twitch - Playing ${gameName}`, 'success');
+                               new Notify({
+                status: 'success',
+                title: 'PolyExtended',
+                text: `${twitchUsername} is Now Live On Twitch - Playing ${gameName}`,
+                effect: 'slide',
+                speed: 300,
+                showIcon: false,
+                showCloseButton: false,
+                autoclose: true,
+                autotimeout: 3000,
+                gap: 20,
+                distance: 20,
+                type: 1, // You mentioned using type 1 here
+                position: 'right top'
+            }).show()
                 } else {
                     // Game information not available
-                    showNotyNotification(`${twitchUsername} is Now Live On Twitch`, 'warning');
+                               new Notify({
+                status: 'success',
+                title: 'PolyExtended',
+                text: `${twitchUsername} is Now Live On Twitch`,
+                effect: 'slide',
+                speed: 300,
+                showIcon: false,
+                showCloseButton: false,
+                autoclose: true,
+                autotimeout: 3000,
+                gap: 20,
+                distance: 20,
+                type: 1, // You mentioned using type 1 here
+                position: 'right top'
+            }).show()
                 }
             })
             .catch(error => {
