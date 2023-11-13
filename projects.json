@@ -12,15 +12,21 @@
         "link": "https://polyextended.github.io/streamlookup/"
     },
     {
+        "name": "StreamLookup",
+        "imageUrl": "https://i.imgur.com/kHOeihm.png",
+        "description": "StreamLookup Is a Tool For To See 7tv BTTV FFZ Twitch Emotes Made By Bacon_Space",
+        "link": "https://polyextended.github.io/streamlookup/"
+    },
+    {
         "name": "Streamstats",
         "imageUrl": "https://avatars.githubusercontent.com/u/16867743?v=4",
         "description": "Gitstats is a tool to check out GitHub Stats.",
         "link": "https://example.com/streamstats"
     },
     {
-        "name": "StreamLookup",
-        "imageUrl": "https://i.imgur.com/kHOeihm.png",
-        "description": "StreamLookup Is a Tool For To See 7tv BTTV FFZ Twitch Emotes Made By Bacon_Space",
-        "link": "https://polyextended.github.io/streamlookup/"
+        "name": "TheCursedGroup: Joke Generator",
+        "imageUrl": "https://i.imgur.com/NOIRW0m.png",
+        "description": "Generate jokes with TheCursedGroup Joke Generator.",
+        "link": "https://thecursedgroup.github.io/joke/"
     }
 ]
