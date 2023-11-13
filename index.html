@@ -7,42 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="default-favicon.ico" id="favicon">
     <meta name="twitter:image" content="default-image-url.png" id="twitter-image">
-	   <!-- Include Simple Notify JavaScript and CSS -->
+    <!-- Include Simple Notify JavaScript and CSS -->
     <script src="https://thecursedgroup.github.io/joke/dad/noty.js"></script>
     <link href="https://polyextended.github.io/live/poly.css" rel="stylesheet">
-    <script>
-        // Fetch the PolyExtended user's avatar from GitHub API
-		const user = "PolyExtend`;
-        fetch(`https://api.github.com/users/${user}`)
-            .then(response => response.json())
-            .then(data => {
-                // Extract the avatar URL from the API response
-                const avatarUrl = data.avatar_url;
-                const twitterImage = document.getElementById('twitter-image');
-                twitterImage.content = avatarUrl;
-                // Update the href attribute of the favicon link
-                const favicon = document.getElementById('favicon');
-                favicon.href = avatarUrl;
-            })
-            .catch(error => {
-                console.error('Error fetching avatar:', error);
-            })
-				new Notify({
-                status: 'success',
-                title: user,
-                text: `Welcome To ${data.login}`,
-                effect: 'slide',
-                speed: 300,
-                showIcon: false,
-                showCloseButton: false,
-                autoclose: true,
-                autotimeout: 3000,
-                gap: 20,
-                distance: 20,
-                type: 1, // You mentioned using type 1 here
-                position: 'right top'
-            }).show()
-    </script>
     <style>
         a {
             color: #08e2c9;
@@ -53,6 +20,19 @@
         .backer-dark {
             background: #08e2c9;
         }
+        .project-tile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            margin: 10px;
+        }
+        .project-tile img {
+            max-width: 100px;
+        }
     </style>
 </head>
 <body>
@@ -62,12 +42,13 @@
                 <ul class="left">
                     <li><a href="https://polyextended.github.io/live/">PolyLive</a></li>
                     <li><a href="https://polyextended.github.io/streamlookup/">PolyLookup</a></li>
-                    <li><a href="#">Discord</a></li>
+                    <li><a href="">Discord</a></li>
                 </ul>
             </div>
         </nav>
+		<div>
         <div class="backer white-text valign-wrapper" style="height: 480px;">
-            <div class="container center-align valign">
+            <div class "container center-align valign">
                 <img src="https://i.imgur.com/WR1oTQL.png" style="height: 140px;">
                 <h1>PolyDev</h1>
                 <h4>Applications for your live streams</h4>
@@ -76,46 +57,7 @@
     </header>
     <main class="container" style="padding: 2rem 0">
         <div class="row">
-            <div class="col s12 m6">
-                <h4 class="center-align"><a href="https://polyextended.github.io/live/" style="color: #16aaf2;">
-                    <img src="https://i.imgur.com/kHOeihm.png" style="height: 100px;"><br>
-                    PolyLive
-                </a></h4>
-                <p class="flow-text">
-                    PolyLive Is a Twitch Lookup Tool To see Who's Live
-                </p>
-            </div>
-            <div class="col s12 m6">
-                <h4 class "center-align"><a href="https://polyextended.github.io/streamlookup/" style="color: #16aaf2;">
-                    <img src="https://i.imgur.com/kHOeihm.png" style="height: 100px;"><br>
-                    PolyLookup
-                </a></h4>
-                <p class="flow-text">
-                    PolyLookup Twitch Stream Tool.
-                </p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col s12 m6">
-                <h4 class="center-align"><a href="http://streamstats.github.io/GitStats/" style="color: #16aaf2;">
-                    <img src="https://avatars.githubusercontent.com/u/16867743?v=4" style="height: 100px;"><br>
-                    Streamstats
-                </a></h4>
-                <p class="flow-text">
-                    Gitstats is a tool to check out GitHub Stats.
-                </p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col s12 m6">
-                <h4 class="center-align"><a href="https://polyextended.github.io/streamlookup/" style="color: #16aaf2;">
-                    <img src="https://i.imgur.com/kHOeihm.png" style="height: 100px;"><br>
-                    StreamLookup
-                </a></h4>
-                <p class="flow-text">
-                    StreamLookup Is a Tool For To See 7tv BTTV FFZ Twitch Emotes Made By Bacon_Space
-                </p>
-            </div>
+            <!-- Projects will be dynamically added here -->
         </div>
     </main>
     <footer class="container section grey-text center-align">
@@ -124,5 +66,68 @@
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
+    <script>
+        // Fetch the PolyExtended user's avatar from GitHub API
+        const user = "PolyExtend";
+        fetch(`https://api.github.com/users/${user}`)
+            .then(response => response.json())
+            .then(data => {
+                new Notify({
+                    status: 'success',
+                    title: data.login,
+                    text: `Welcome To Our Site.<center> Made By ${data.name}`,
+                    effect: 'slide',
+                    speed: 300,
+                    showIcon: false,
+                    showCloseButton: false,
+                    autoclose: true,
+                    autotimeout: 3000,
+                    gap: 20,
+                    distance: 20,
+                    type: 3,
+                    position: 'bottom'
+                });
+
+                const avatarUrl = data.avatar_url;
+                const twitterImage = document.getElementById('twitter-image');
+                twitterImage.content = avatarUrl;
+                // Update the href attribute of the favicon link
+                const favicon = document.getElementById('favicon');
+                favicon.href = avatarUrl;
+            })
+            .catch(error => {
+                console.error('Error fetching avatar:', error);
+            });
+
+        // Function to load and display projects from projects.json
+        async function loadProjects() {
+            try {
+                const response = await fetch('projects.json');
+                const projects = await response.json();
+                const projectsContainer = document.querySelector('.row');
+
+                projects.forEach(project => {
+                    const projectDiv = document.createElement('div');
+                    projectDiv.className = 'col s12 m6';
+                    projectDiv.innerHTML = `
+                        <div class="project-tile">
+                            <a href="${project.link}" style="color: #16aaf2;">
+                                <img src="${project.imageUrl}">
+                                <h4>${project.name}</h4>
+                            </a>
+                            <p>${project.description}</p>
+                        </div>
+                    `;
+
+                    projectsContainer.appendChild(projectDiv);
+                });
+            } catch (error) {
+                console.error('Error loading projects:', error);
+            }
+        }
+
+        // Call the loadProjects function to load and display projects from projects.json
+        loadProjects();
+    </script>
 </body>
 </html>
