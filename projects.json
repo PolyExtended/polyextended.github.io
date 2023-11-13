@@ -1,0 +1,26 @@
+[
+    {
+        "name": "PolyLive",
+        "imageUrl": "https://i.imgur.com/kHOeihm.png",
+        "description": "PolyLive Is a Twitch Lookup Tool To see Who's Live",
+        "link": "https://polyextended.github.io/live/"
+    },
+    {
+        "name": "PolyLookup",
+        "imageUrl": "https://i.imgur.com/kHOeihm.png",
+        "description": "PolyLookup Twitch Stream Tool.",
+        "link": "https://polyextended.github.io/streamlookup/"
+    },
+    {
+        "name": "Streamstats",
+        "imageUrl": "https://avatars.githubusercontent.com/u/16867743?v=4",
+        "description": "Gitstats is a tool to check out GitHub Stats.",
+        "link": "https://example.com/streamstats"
+    },
+    {
+        "name": "StreamLookup",
+        "imageUrl": "https://i.imgur.com/kHOeihm.png",
+        "description": "StreamLookup Is a Tool For To See 7tv BTTV FFZ Twitch Emotes Made By Bacon_Space",
+        "link": "https://polyextended.github.io/streamlookup/"
+    }
+]
