@@ -55,7 +55,7 @@
     --notify-error: rgb(235, 87, 87);
     --notify-error-progress: rgb(192, 69, 69);
     --notify-success: rgb(173, 216, 230);
-    --notify-success-progress: blue;
+    --notify-success-progress: #42f5e3;
     --notify-warning: rgb(242, 201, 76);
     --notify-warning-progress: rgb(196, 166, 79);
     --notify-info: rgb(81, 205, 243);
