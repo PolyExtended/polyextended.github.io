@@ -20,6 +20,16 @@
         .backer-dark {
             background: #08e2c9;
         }
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; /* Center-align the tiles horizontally */
+        }
+        .col.s12.m6 {
+            flex: 0 0 calc(33.33% - 20px); /* Adjust the width as needed */
+            margin: 10px;
+            max-width: calc(33.33% - 20px); /* Adjust the max width as needed */
+        }
         .project-tile {
             display: flex;
             flex-direction: column;
@@ -28,7 +38,7 @@
             padding: 20px;
             background-color: #f0f0f0;
             border: 1px solid #ccc;
-            margin: 10px;
+            height: 100%;
         }
         .project-tile img {
             max-width: 100px;
@@ -46,9 +56,8 @@
                 </ul>
             </div>
         </nav>
-		<div>
         <div class="backer white-text valign-wrapper" style="height: 480px;">
-            <div class "container center-align valign">
+            <div class="container center-align valign">
                 <img src="https://i.imgur.com/WR1oTQL.png" style="height: 140px;">
                 <h1>PolyDev</h1>
                 <h4>Applications for your live streams</h4>
