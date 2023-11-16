@@ -12,10 +12,10 @@
         "link": "https://polyextended.github.io/streamlookup/"
     },
     {
-        "name": "PolyFeature",
+        "name": "PolyTime",
         "imageUrl": "https://i.imgur.com/kHOeihm.png",
-        "description": "PolyLookup Twitch Feature Tool.",
-        "link": "https://polyextended.github.io/feature/"
+        "description": "PolyTime Time Tool.",
+        "link": "https://polyextended.github.io/time/"
     },
     {
         "name": "Streamstats",
