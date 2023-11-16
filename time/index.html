@@ -8,10 +8,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <meta property="og:title" content="PolyExtended">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://polyextended.github.io/time/">
-<meta property="og:image" content="https://i.vgy.me/czZ0Sp.png">
-<meta property="og:site_name" content="PolyTime">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://polyextended.github.io/time/">
+    <meta property="og:image" content="https://i.vgy.me/czZ0Sp.png">
+    <meta property="og:site_name" content="PolyTime">
     <link rel="icon" href="https://i.vgy.me/czZ0Sp.png" type="image/x-icon">
 
     <!-- Add Materialize CSS -->
@@ -21,7 +21,7 @@
   <!-- Include Noty JavaScript -->
     <script src="https://cdn.jsdelivr.net/gh/needim/noty@77268c46/lib/noty.min.js"></script>
     <script src="https://polyextended.github.io/meta.js">
-               // Fetch the PolyExtended user's avatar from GitHub API
+        // Fetch the PolyExtended user's avatar from GitHub API
         fetch('https://api.github.com/users/PolyExtended')
             .then(response => response.json())
             .then(data => {
@@ -41,11 +41,11 @@
         a {
             color: #15ebd2;
         }
-        
+
         .backer {
             background: #15ebd2;
         }
-        
+
         .backer-dark {
             background: #12d0b9;
         }
@@ -65,11 +65,12 @@
             width: 26%;
             height: auto;
         }
-        img{
-            height: 38px; padding: 12px 0;
+        img {
+            height: 38px;
+            padding: 12px 0;
         }
     </style>
-        <header class="z-depth-1">
+    <header class="z-depth-1">
         <nav class="z-depth-0 backer-dark">
             <div class="nav-wrapper container">
                 <ul class="left">
@@ -79,39 +80,40 @@
                 </ul>
             </div>
         </nav>
-<div class="container">
-    <h3>PolyTime</h3>
-    <span>Whippy Start's At 7:30 AEST</span></p>
-    <p id="local-time">Local Time: <span class="badge bg-primary text-white"></span></p>
-    <p id="aest-time">AEST: <span class="badge bg-success text-white"></span></p>
-</div>
+        <div class="container">
+            <h3>PolyTime</h3>
+            <span>Whippy Start's At 7:30 AEST</span>
+            <p id="local-time">Local Time: <span class="badge bg-primary text-white"></span></p>
+            <p id="aest-time">AEST: <span class="badge bg-success text-white"></span></p>
+        </div>
+    </header>
 
-<!-- Add Materialize JS and jQuery -->
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- Add Materialize JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
-<script>
-    // Function to update time
-    function updateTime() {
-        // Get the current local time
-        const localTime = new Date();
+    <script>
+        // Function to update time
+        function updateTime() {
+            // Get the current local time
+            const localTime = new Date();
 
-        // Display local time
-        $("#local-time .badge").html(localTime.toLocaleTimeString()).addClass('text-white');
+            // Display local time
+            $("#local-time .badge").html(localTime.toLocaleTimeString()).addClass('text-white');
 
-        // Display AEST time
-        const aestTime = localTime.toLocaleTimeString("en-AU", { timeZone: "Australia/Sydney" });
-        $("#aest-time .badge").html(aestTime).addClass('text-white');
-    }
+            // Display AEST time (subtracting an hour)
+            const aestTime = new Date(localTime.getTime() - 60 * 60 * 1000).toLocaleTimeString("en-AU", { timeZone: "Australia/Sydney" });
+            $("#aest-time .badge").html(aestTime).addClass('text-white');
+        }
 
-    // Update time every second
-    setInterval(updateTime, 1000);
+        // Update time every second
+        setInterval(updateTime, 1000);
 
-    // Initialize Materialize components
-    $(document).ready(function () {
-        M.AutoInit();
-    });
-</script>
+        // Initialize Materialize components
+        $(document).ready(function () {
+            M.AutoInit();
+        });
+    </script>
 
 </body>
 </html>
