@@ -1,0 +1,31 @@
+        a {
+            color: #15ebd2;
+        }
+
+        .backer {
+            background: #15ebd2;
+        }
+
+        .backer-dark {
+            background: #12d0b9;
+        }
+
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .card {
+            width: 11rem;
+            /* Add other card styling here */
+        }
+
+        .card img {
+            width: 26%;
+            height: auto;
+        }
+        img {
+            height: 38px;
+            padding: 12px 0;
+        }
