@@ -3,30 +3,30 @@
         "name": "PolyLive",
         "imageUrl": "https://i.imgur.com/kHOeihm.png",
         "description": "PolyLive Is a Twitch Lookup Tool To see Who's Live",
-        "link": "https://polyextended.github.io/live/"
+        "link": "https://tinyurl.com/PolyLiveTool"
     },
     {
         "name": "PolyLookup",
         "imageUrl": "https://i.imgur.com/kHOeihm.png",
         "description": "PolyLookup Twitch Stream Tool.",
-        "link": "https://polyextended.github.io/streamlookup/"
+        "link": "https://tinyurl.com/PolyLookup"
     },
     {
         "name": "PolyTime",
         "imageUrl": "https://i.imgur.com/kHOeihm.png",
         "description": "PolyTime Time Tool.",
-        "link": "https://polyextended.github.io/time/"
+        "link": "https://tinyurl.com/PolyTime"
     },
     {
         "name": "Streamstats",
         "imageUrl": "https://avatars.githubusercontent.com/u/16867743?v=4",
         "description": "Gitstats is a tool to check out GitHub Stats.",
-        "link": "https://example.com/streamstats"
+        "link": "https://tinyurl.com/TheStreamStats"
     },
     {
         "name": "TheCursedGroup",
         "imageUrl": "https://i.imgur.com/NOIRW0m.png",
         "description": "Generate jokes with TheCursedGroup Joke Generator.",
-        "link": "https://thecursedgroup.github.io/joke/"
+        "link": "https://tinyurl.com/TheCursedJoke"
     }
 ]
