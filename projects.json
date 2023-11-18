@@ -18,6 +18,12 @@
         "link": "https://tinyurl.com/PolyTime"
     },
     {
+        "name": "PolyRP",
+        "imageUrl": "https://i.imgur.com/kHOeihm.png",
+        "description": "PolyRolePlay.",
+        "link": "https://tinyurl.com/PolyRP"
+    },
+    {
         "name": "Streamstats",
         "imageUrl": "https://avatars.githubusercontent.com/u/16867743?v=4",
         "description": "Gitstats is a tool to check out GitHub Stats.",
