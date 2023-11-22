@@ -14,8 +14,14 @@
     {
         "name": "PolyTime",
         "imageUrl": "https://i.imgur.com/kHOeihm.png",
-        "description": "PolyTime Time Tool.",
+        "description": "PolyTime Tool.",
         "link": "https://tinyurl.com/PolyTime"
+    },
+    {
+        "name": "PolyRadio",
+        "imageUrl": "https://i.imgur.com/kHOeihm.png",
+        "description": "Poly Radio Tool.",
+        "link": "https://tinyurl.com/ThePolyRadio"
     },
     {
         "name": "PolyRP",
