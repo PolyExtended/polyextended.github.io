@@ -22,5 +22,201 @@
     {
         "question": "Would you rather be famous when you are alive and forgotten when you die, or unknown when you are alive but famous after you die?",
         "options": ["Famous and Forgotten", "Unknown and Famous After Death"]
+    },
+    {
+        "question": "Would you rather have the ability to read minds or control time?",
+        "options": ["Read Minds", "Control Time"]
+    },
+    {
+        "question": "Would you rather live in a world without music or a world without movies?",
+        "options": ["Without Music", "Without Movies"]
+    },
+    {
+        "question": "Would you rather have the power of teleportation or the ability to shape-shift?",
+        "options": ["Teleportation", "Shape-shifting"]
+    },
+    {
+        "question": "Would you rather live in a bustling city or a quiet countryside?",
+        "options": ["Bustling City", "Quiet Countryside"]
+    },
+    {
+        "question": "Would you rather have the ability to speak all languages fluently or communicate with animals?",
+        "options": ["Speak All Languages", "Communicate with Animals"]
+    },
+    {
+        "question": "Would you rather have the power of super strength or the ability to fly?",
+        "options": ["Super Strength", "Fly"]
+    },
+    {
+        "question": "Would you rather explore the deep sea or outer space?",
+        "options": ["Explore Deep Sea", "Explore Outer Space"]
+    },
+    {
+        "question": "Would you rather always have perfect weather or never have to wait in a line again?",
+        "options": ["Perfect Weather", "Never Wait in Line"]
+    },
+    {
+        "question": "Would you rather be able to travel back in time or into the future?",
+        "options": ["Travel Back in Time", "Travel Into the Future"]
+    },
+    {
+        "question": "Would you rather have the power of invisibility or the ability to teleport?",
+        "options": ["Invisibility", "Teleport"]
+    },
+    {
+        "question": "Would you rather be a famous actor or a renowned scientist?",
+        "options": ["Famous Actor", "Renowned Scientist"]
+    },
+    {
+        "question": "Would you rather live in a world without internet or without TV?",
+        "options": ["Without Internet", "Without TV"]
+    },
+    {
+        "question": "Would you rather have a personal chef or a personal chauffeur?",
+        "options": ["Personal Chef", "Personal Chauffeur"]
+    },
+    {
+        "question": "Would you rather have the power of telekinesis or the ability to time travel?",
+        "options": ["Telekinesis", "Time Travel"]
+    },
+    {
+        "question": "Would you rather have the ability to control fire or water?",
+        "options": ["Control Fire", "Control Water"]
+    },
+    {
+        "question": "Would you rather always have a clean house but no personal chef or a messy house with a personal chef?",
+        "options": ["Clean House, No Chef", "Messy House, Personal Chef"]
+    },
+    {
+        "question": "Would you rather have the power of super speed or the ability to read minds?",
+        "options": ["Super Speed", "Read Minds"]
+    },
+    {
+        "question": "Would you rather have a lifetime supply of your favorite food or a lifetime supply of your favorite beverage?",
+        "options": ["Favorite Food", "Favorite Beverage"]
+    },
+    {
+        "question": "Would you rather have the power of teleportation or be able to clone yourself?",
+        "options": ["Teleportation", "Clone Yourself"]
+    },
+    {
+        "question": "Would you rather live in a treehouse or an underwater city?",
+        "options": ["Treehouse", "Underwater City"]
+    },
+    {
+        "question": "Would you rather have the ability to talk to plants or understand every language spoken by animals?",
+        "options": ["Talk to Plants", "Understand Animal Languages"]
+    },
+    {
+        "question": "Would you rather have the power of time manipulation or mind control?",
+        "options": ["Time Manipulation", "Mind Control"]
+    },
+    {
+        "question": "Would you rather have a personal assistant or a personal masseuse?",
+        "options": ["Personal Assistant", "Personal Masseuse"]
+    },
+    {
+        "question": "Would you rather have the ability to stop time or reverse it?",
+        "options": ["Stop Time", "Reverse Time"]
+    },
+    {
+        "question": "Would you rather always have perfect hair or perfect skin?",
+        "options": ["Perfect Hair", "Perfect Skin"]
+    },
+    {
+        "question": "Would you rather have the power of super intelligence or super strength?",
+        "options": ["Super Intelligence", "Super Strength"]
+    },
+    {
+        "question": "Would you rather be an Olympic gold medalist or a Nobel Prize winner?",
+        "options": ["Olympic Gold Medalist", "Nobel Prize Winner"]
+    },
+    {
+        "question": "Would you rather have the ability to control the weather or the stock market?",
+        "options": ["Control Weather", "Control Stock Market"]
+    },
+    {
+        "question": "Would you rather have the power of flight or the ability to breathe underwater?",
+        "options": ["Flight", "Breathe Underwater"]
+    },
+    {
+        "question": "Would you rather have the power of telepathy or the ability to time travel?",
+        "options": ["Telepathy", "Time Travel"]
+    },
+    {
+        "question": "Would you rather be a famous musician or a famous athlete?",
+        "options": ["Famous Musician", "Famous Athlete"]
+    },
+    {
+        "question": "Would you rather have the ability to change the past or predict the future?",
+        "options": ["Change the Past", "Predict the Future"]
+    },
+    {
+        "question": "Would you rather have the power of mind reading or the ability to control fire?",
+        "options": ["Mind Reading", "Control Fire"]
+    },
+    {
+        "question": "Would you rather have the ability to speak every language fluently or be a master of every musical instrument?",
+        "options": ["Speak Every Language Fluently", "Master Every Musical Instrument"]
+    },
+    {
+        "question": "Would you rather have the power to heal others or the power to never get sick?",
+        "options": ["Heal Others", "Never Get Sick"]
+    },
+    {
+        "question": "Would you rather have the ability to communicate with animals or speak every human language?",
+        "options": ["Communicate with Animals", "Speak Every Human Language"]
+    },
+    {
+        "question": "Would you rather have the power of flight or the ability to teleport?",
+        "options": ["Flight", "Teleport"]
+    },
+    {
+        "question": "Would you rather have the power of super speed or the ability to control time?",
+        "options": ["Super Speed", "Control Time"]
+    },
+    {
+        "question": "Would you rather live in a world without books or without the internet?",
+        "options": ["Without Books", "Without Internet"]
+    },
+    {
+        "question": "Would you rather have the ability to transform into any animal or speak every human language?",
+        "options": ["Transform into Any Animal", "Speak Every Human Language"]
+    },
+    {
+        "question": "Would you rather be a famous actor in a blockbuster movie or a critically acclaimed indie film?",
+        "options": ["Famous Actor in a Blockbuster", "Critically Acclaimed Indie Film"]
+    },
+    {
+        "question": "Would you rather have the power of telekinesis or the ability to control the weather?",
+        "options": ["Telekinesis", "Control Weather"]
+    },
+    {
+        "question": "Would you rather live in a world without music or without art?",
+        "options": ["Without Music", "Without Art"]
+    },
+    {
+        "question": "Would you rather have the ability to instantly learn any skill or be a master of persuasion?",
+        "options": ["Instantly Learn Any Skill", "Master of Persuasion"]
+    },
+    {
+        "question": "Would you rather have the power of super hearing or the ability to become invisible?",
+        "options": ["Super Hearing", "Become Invisible"]
+    },
+    {
+        "question": "Would you rather have the ability to time travel to the past or the future?",
+        "options": ["Time Travel to the Past", "Time Travel to the Future"]
+    },
+    {
+        "question": "Would you rather have the power to control minds or the power to control technology?",
+        "options": ["Control Minds", "Control Technology"]
+    },
+    {
+        "question": "Would you rather live in a world where everyone knows your thoughts or where no one knows your thoughts?",
+        "options": ["Everyone Knows Your Thoughts", "No One Knows Your Thoughts"]
+    },
+    {
+        "question": "Would you rather have the power of super strength or the ability to breathe underwater?",
+        "options": ["Super Strength", "Breathe Underwater"]
     }
 ]
