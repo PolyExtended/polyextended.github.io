@@ -1,8 +1,26 @@
 [
-    "Would you rather have the ability to fly or be invisible?",
-    "Would you rather always be 10 minutes late or 20 minutes early?",
-    "Would you rather have a rewind button for your life or a pause button?",
-    "Would you rather always speak the truth or always lie?",
-    "Would you rather have unlimited money or unlimited time?",
-    "Would you rather be famous when you are alive and forgotten when you die, or unknown when you are alive but famous after you die?"
+    {
+        "question": "Would you rather have the ability to fly or be invisible?",
+        "options": ["Fly", "Be Invisible"]
+    },
+    {
+        "question": "Would you rather always be 10 minutes late or 20 minutes early?",
+        "options": ["10 Minutes Late", "20 Minutes Early"]
+    },
+    {
+        "question": "Would you rather have a rewind button for your life or a pause button?",
+        "options": ["Rewind", "Pause"]
+    },
+    {
+        "question": "Would you rather always speak the truth or always lie?",
+        "options": ["Speak the Truth", "Always Lie"]
+    },
+    {
+        "question": "Would you rather have unlimited money or unlimited time?",
+        "options": ["Unlimited Money", "Unlimited Time"]
+    },
+    {
+        "question": "Would you rather be famous when you are alive and forgotten when you die, or unknown when you are alive but famous after you die?",
+        "options": ["Famous and Forgotten", "Unknown and Famous After Death"]
+    }
 ]
