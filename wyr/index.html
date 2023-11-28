@@ -6,6 +6,9 @@
     <title>Would You Rather?</title>
     <link rel="stylesheet" href="https://polyextended.github.io/nav.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Include Simple Notify JavaScript and CSS -->
+    <script src="https://thecursedgroup.github.io/joke/dad/noty.js"></script>
+    <link href="https://thecursedgroup.github.io/joke/dad/noty.css" rel="stylesheet">
 </head>
 <body>
     <header class="z-depth-1">
@@ -50,6 +53,13 @@
 
             // Get a random question
             const randomQuestion = questions[Math.floor(Math.random() * questions.length)];
+
+            // Display notification for the new question
+            noty({
+                text: `New Question: ${randomQuestion.question}`,
+                type: 'info',
+                timeout: 3000 // Adjust timeout as needed
+            });
 
             document.getElementById('question').innerText = randomQuestion.question;
             document.getElementById('answerResult').innerText = '';
