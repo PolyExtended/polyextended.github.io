@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Would You Rather?</title>
+    <link rel="stylesheet" href="https://polyextended.github.io/nav.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+<body>
+    <header class="z-depth-1">
+        <nav class="z-depth-0 backer-dark">
+            <div class="nav-wrapper container">
+                <ul class="left">
+                    <li><a href="https://polyextended.github.io/">Home</a></li>
+                    <li><a href="https://polyextended.github.io/live/">PolyLive</a></li>
+                    <li><a href="https://polyextended.github.io/streamlookup/">PolyLookup</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>Would You Rather?</h1>
+        <button class="waves-effect waves-light btn" onclick="getQuestion()">Get a Question</button>
+        <p id="question"></p>
+        <div id="answerButtons"></div>
+        <p id="answerResult"></p>
+        <p id="score">Score: <span id="userScore">0</span></p>
+    </div>
+
+    <script>
+        let userScore = localStorage.getItem('userScore') || 0;
+        let questions;
+
+        // Fetch questions from the specified URL
+        fetch('https://polyextended.github.io/files/questions.json')
+            .then(response => response.json())
+            .then(data => {
+                questions = data;
+            })
+            .catch(error => console.error('Error fetching questions:', error));
+
+        function getQuestion() {
+            // Ensure questions are loaded before proceeding
+            if (!questions) {
+                console.error('Questions not loaded yet.');
+                return;
+            }
+
+            // Get a random question
+            const randomQuestion = questions[Math.floor(Math.random() * questions.length)];
+
+            document.getElementById('question').innerText = randomQuestion.question;
+            document.getElementById('answerResult').innerText = '';
+
+            // Dynamically generate buttons based on options
+            document.getElementById('answerButtons').innerHTML = randomQuestion.options.map(option =>
+                `<button class="waves-effect waves-light btn" onclick="answerQuestion('${option}')">${option}</button>`
+            ).join('');
+        }
+
+        function answerQuestion(userAnswer) {
+            // Process the user's answer as needed
+            document.getElementById('answerResult').innerText = `You chose: ${userAnswer}`;
+
+            // Increment the score for demonstration purposes
+            userScore++;
+            localStorage.setItem('userScore', userScore);
+            document.getElementById('userScore').innerText = userScore;
+        }
+
+        document.getElementById('userScore').innerText = userScore;
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>
