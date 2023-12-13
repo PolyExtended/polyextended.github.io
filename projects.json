@@ -41,6 +41,12 @@
     "description": "Poly - Would You Rather.",
     "link": "https://rebrand.ly/polywyr"
   },
+    {
+    "name": "PolyFCS",
+    "imageUrl": "https://i.imgur.com/kHOeihm.png",
+    "description": "Poly - Fortnite Cosmetic Search.",
+    "link": "https://polyextended.github.io/cosmetic/"
+  },
   {
     "name": "Streamstats",
     "imageUrl": "https://avatars.githubusercontent.com/u/16867743?v=4",
