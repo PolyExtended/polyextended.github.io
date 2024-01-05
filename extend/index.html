@@ -1,85 +1,130 @@
-<html>
-	<head>
-		<title>PolyExtend - PolyDev</title>
-		<link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
-		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		
-		<style>
-			a {
-				color: #16aaf2;
-			}
-			
-			.backer {
-				background: #16aaf2;
-			}
-			
-			.backer-dark {
-				background: #0c99dd;
-			}
-		</style>
-	</head>
-	<body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>PolyExtend - PolyDev</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    a {
+      color: #16aaf2;
+    }
+
+    .backer {
+      background: #16aaf2;
+    }
+
+    .backer-dark {
+      background: #0c99dd;
+    }
+  </style>
+</head>
 <body>
-    <header class="z-depth-1">
-        <nav class="z-depth-0 backer-dark">
-            <div class="nav-wrapper container">
-                <ul class="left">
-                    <li><a href="https://rebrand.ly/PolyExtended">Home</a></li>
-                    <li><a href="https://rebrand.ly/polylive">PolyLive</a></li>
-                    <li><a href="https://rebrand.ly/PolyStreamLookup">PolyLookup</a></li>
-                    <li><a href="https://rebrand.ly/polywyr">Poly - WYR?</a></li>
-                </ul>
+
+  <header class="z-depth-1">
+    <nav class="z-depth-0 backer-dark">
+      <div class="nav-wrapper container">
+        <ul class="left">
+          <li><a href="https://rebrand.ly/PolyExtended">Home</a></li>
+          <li><a href="https://rebrand.ly/polylive">PolyLive</a></li>
+          <li><a href="https://rebrand.ly/PolyStreamLookup">PolyLookup</a></li>
+          <li><a href="https://rebrand.ly/polywyr">Poly - WYR?</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <header>
+    <div class="backer white-text valign-wrapper" style="height: 480px;">
+      <div class="container center-align valign">
+        <img src="/images/extend-white.png" style="height: 140px;">
+        <h1>PolyExtend</h1>
+        <h4>Extend your stream experience</h4>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" style="padding: 2rem 0">
+    <!-- Your main content here -->
+    <div id="repo-cards"></div>
+  </main>
+
+  <footer class="container section grey-text center-align">
+    &copy; 2016 PolyDev
+  </footer>
+
+  <script>
+    // Fetch repositories from GitHub API with the specified topics
+    const topics = ['polyextended'];
+    const poly = 'polyextended';
+    fetch('https://api.github.com/users/polyextended/repos')
+      .then(response => response.json())
+      .then(repos => {
+        // Select the container for repository cards
+        const repoCards = document.getElementById('repo-cards');
+
+        // Filter repositories based on topics
+        const filteredRepos = repos.filter(repo => {
+          const repoTopics = repo.topics || [];
+          return topics.every(topic => repoTopics.includes(topic));
+        });
+
+        // Iterate through the filtered repositories and create cards
+        filteredRepos.forEach(repo => {
+          // Create card element
+          const card = document.createElement('div');
+          card.classList.add('card', 'mb-3');
+
+          // Include card header template
+          card.innerHTML = `
+            <h3 class="card-header">${repo.name}</h3>
+            <div class="card-body">
+              <h5 class="card-title">Project For  ${poly}</h5>
+              <h6 class="card-subtitle text-muted"></h6>
+              <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  Stars
+                  <span class="badge bg-primary rounded-pill">${repo.stargazers_count}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  Watchers
+                  <span class="badge bg-primary rounded-pill">${repo.watchers_count}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  Forks
+                  <span class="badge bg-primary rounded-pill">${repo.forks_count}</span>
+                </li>
+              </ul>
             </div>
-        </nav>
-    </header>
-			
-			<div class="backer white-text valign-wrapper" style="height: 480px;">
-				<div class="container center-align valign">
-					<img src="/images/extend-white.png" style="height: 140px;">
-					<h1>PolyExtend</h1>
-					<h4>Extend your stream experience</h4>
-				</div>
-			</div>
-		</header>
-		
-		<main class="container" style="padding: 2rem 0">
-			<div class="row">
-				<div class="col s12 m6">
-					<h4 class="center-align"><i class="material-icons small" style="vertical-align: middle;">pan_tool</i> Good for spooning</h4>
-					<p class="flow-text">
-						Spoon Me can spoon any truck you throw at it, and make it shine. This works by applying directly to the forehead, then exploding the good one.
-					</p>
-				</div>
-				<div class="col s12 m6">
-					<h4 class="center-align"><i class="material-icons small" style="vertical-align: middle;">accessible</i> Good for stomping</h4>
-					<p class="flow-text">
-						Using futuristic stomping technology, Spoon Me can also stomp your favorite HTML, CSS, and JS files. This makes you files smaller and load faster.
-					</p>
-				</div>
-			</div>
-			
-			<div class="row">
-				<div class="col s12 m6">
-					<h4 class="center-align"><i class="material-icons small" style="vertical-align: middle;">face</i> Good for everything</h4>
-					<p class="flow-text">
-						Spoon Me can do anything you want it to. Spooning, stomping, sending bananas to the moon, traveling time, and more.
-					</p>
-				</div>
-				<div class="col s12 m6">
-					<h4 class="center-align"><i class="material-icons small" style="vertical-align: middle;">thumb_up</i> Good for nothing</h4>
-					<p class="flow-text">
-						We were so busy making Spoon Me as amazing as it could be, we forgot to make it actually do anything. Don't worry though, it will still slow down your pages, like a real stomper.
-					</p>
-				</div>
-			</div>
-		</main>
-		
-		<footer class="container section grey-text center-align">
-			&copy; 2016 PolyDev
-		</footer>
-		
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-		<script src="//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
-	</body>
+            <svg xmlns="http://www.w3.org/2000/svg" class="d-block user-select-none" width="100%" height="200"
+              aria-label="${repo.name}" focusable="false" role="img" preserveAspectRatio="xMidYMid slice"
+              viewBox="0 0 318 180" style="font-size:1.125rem;text-anchor:middle">
+              <rect width="100%" height="100%" fill="${randomColor()}"></rect>
+              <text x="50%" y="50%" fill="#dee2e6" dy=".3em">${repo.name}</text>
+            </svg>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">${repo.description || `Project For @PolyExtended${bsrp}`}</li>
+            </ul>
+            <div class="card-body">
+              <a href="${repo.html_url}" class="card-link">Link</a>
+            </div>
+            <div class="card-footer text-muted" id="repo-created-at-${repo.id}"></div>
+          `;
+
+          // Format and set the created_at timestamp using Moment.js
+          const createdTimestamp = moment(repo.created_at).fromNow();
+          const createdAtElement = card.querySelector(`#repo-created-at-${repo.id}`);
+          createdAtElement.textContent = `Created ${createdTimestamp}`;
+
+          // Append the card to the container
+          repoCards.appendChild(card);
+        });
+      })
+      .catch(error => console.error('Error fetching repositories:', error));
+  </script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
 </html>
