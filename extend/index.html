@@ -1,114 +1,146 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <title>PolyExtend - PolyDev</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <style>
-    a {
-      color: #16aaf2;
-    }
-
-    .backer {
-      background: #16aaf2;
-    }
-
-    .backer-dark {
-      background: #0c99dd;
-    }
-  </style>
+    <title>PolyExtend - Home</title>
+    <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="https://i.imgur.com/kHOeihm.png" id="favicon">
+    <meta name="twitter:image" content="https://i.imgur.com/kHOeihm.png" id="twitter-image">
+    <!-- Include Simple Notify JavaScript and CSS -->
+    <script src="https://thecursedgroup.github.io/joke/dad/noty.js"></script>
+    <link href="https://polyextended.github.io/live/poly.css" rel="stylesheet">
+    <style>
+        a {
+            color: #08e2c9;
+        }
+        .backer {
+            background: #08e2c9;
+        }
+        .backer-dark {
+            background: #08e2c9;
+        }
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; /* Center-align the tiles horizontally */
+        }
+        .col.s12.m6 {
+            flex: 0 0 calc(33.33% - 20px); /* Adjust the width as needed */
+            margin: 10px;
+            max-width: calc(33.33% - 20px); /* Adjust the max width as needed */
+        }
+        .project-tile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            height: 100%;
+        }
+        .project-tile img {
+            max-width: 100px;
+        }
+    </style>
 </head>
 <body>
-
-  <header class="z-depth-1">
-    <nav class="z-depth-0 backer-dark">
-      <div class="nav-wrapper container">
-        <ul class="left">
-          <li><a href="https://rebrand.ly/PolyExtended">Home</a></li>
-          <li><a href="https://rebrand.ly/polylive">PolyLive</a></li>
-          <li><a href="https://rebrand.ly/PolyStreamLookup">PolyLookup</a></li>
-          <li><a href="https://rebrand.ly/polywyr">Poly - WYR?</a></li>
-        </ul>
-      </div>
-    </nav>
-  </header>
-
-  <header>
-    <div class="backer white-text valign-wrapper" style="height: 480px;">
-      <div class="container center-align valign">
-        <img src="/images/extend-white.png" style="height: 140px;">
-        <h1>PolyExtend</h1>
-        <h4>Extend your stream experience</h4>
-      </div>
-    </div>
-  </header>
-
-  <main class="container" style="padding: 2rem 0">
-    <!-- Your main content here -->
-    <div id="repo-cards"></div>
-  </main>
-
-  <footer class="container section grey-text center-align">
-    &copy; 2016 PolyDev
-  </footer>
-
-  <script>
-    // Fetch repositories from GitHub API with the specified topics
-    const topics = ['polyextended'];
-    const poly = 'polyextended';
-
-    fetch('https://api.github.com/users/polyextended/repos')
-      .then(response => response.json())
-      .then(repos => {
-        // Select the container for repository cards
-        const repoCards = document.getElementById('repo-cards');
-
-        // Filter repositories based on topics
-        const filteredRepos = repos.filter(repo => {
-          const repoTopics = repo.topics || [];
-          return topics.every(topic => repoTopics.includes(topic));
-        });
-
-        // Iterate through the filtered repositories and create cards
-        filteredRepos.forEach(repo => {
-          // Create card element
-          const card = document.createElement('div');
-          card.classList.add('card', 'mb-3');
-
-          // Include card content
-          card.innerHTML = `
-            <div class="card-content">
-              <span class="card-title activator grey-text text-darken-4">${repo.name}<i class="material-icons right">more_vert</i></span>
-              <p>${repo.description || `Project For @PolyExtended${bsrp}`}</p>
+    <header class="z-depth-1">
+        <nav class="z-depth-0 backer-dark">
+            <div class="nav-wrapper container">
+                <ul class="left">
+                    <li><a href="https://rebrand.ly/PolyExtended">Home</a></li>
+                    <li><a href="https://rebrand.ly/polylive">PolyLive</a></li>
+                    <li><a href="https://rebrand.ly/PolyStreamLookup">PolyLookup</a></li>
+                    <li><a href="https://rebrand.ly/polywyr">Poly - WYR?</a></li>
+                    <li><a href="https://polyextended.github.io/cosmetic/">Poly - FCS</a></li>
+                </ul>
             </div>
-            <div class="card-reveal">
-              <span class="card-title grey-text text-darken-4">${repo.name}<i class="material-icons right">close</i></span>
-              <ul>
-                <li>Stars: ${repo.stargazers_count}</li>
-                <li>Watchers: ${repo.watchers_count}</li>
-                <li>Forks: ${repo.forks_count}</li>
-              </ul>
-              <a href="${repo.html_url}" class="btn">Link</a>
+        </nav>
+    </header>
+
+        <div class="backer white-text valign-wrapper" style="height: 480px;">
+            <div class="container center-align valign">
+                <img src="https://i.imgur.com/WR1oTQL.png" style="height: 140px;">
+                <h1>PolyDev</h1>
+                <h4>Applications for your live streams</h4>
             </div>
-          `;
+        </div>
+    </header>
+    <main class="container" style="padding: 2rem 0">
+        <div class="row">
+            <!-- Projects will be dynamically added here -->
+        </div>
+    </main>
+    <footer class="container section grey-text center-align">
+        &copy; 2016 PolyDev
+    </footer>
 
-          // Format and set the created_at timestamp using Moment.js
-          const createdTimestamp = moment(repo.created_at).fromNow();
-          const createdAtElement = document.createElement('div');
-          createdAtElement.classList.add('card-action', 'text-muted');
-          createdAtElement.textContent = `Created ${createdTimestamp}`;
-          card.appendChild(createdAtElement);
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
+    <script>
+        // Fetch the PolyExtended user's avatar from GitHub API
+        const user = "PolyExtend";
+        fetch(`https://api.github.com/users/${user}`)
+            .then(response => response.json())
+            .then(data => {
+                new Notify({
+                    status: 'success',
+                    title: data.login,
+                    text: `Welcome To Our Site.<center> Made By ${data.name}`,
+                    effect: 'slide',
+                    speed: 300,
+                    showIcon: false,
+                    showCloseButton: false,
+                    autoclose: true,
+                    autotimeout: 3000,
+                    gap: 20,
+                    distance: 20,
+                    type: 3,
+                    position: 'bottom'
+                });
 
-          // Append the card to the container
-          repoCards.appendChild(card);
-        });
-      })
-      .catch(error => console.error('Error fetching repositories:', error));
-  </script>
+                const avatarUrl = data.avatar_url;
+                const twitterImage = document.getElementById('twitter-image');
+                twitterImage.content = avatarUrl;
+                // Update the href attribute of the favicon link
+                const favicon = document.getElementById('favicon');
+                favicon.href = avatarUrl;
+            })
+            .catch(error => {
+                console.error('Error fetching avatar:', error);
+            });
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        // Function to load and display projects from projects.json
+        async function loadProjects() {
+            try {
+                const response = await fetch('projects.json');
+                const projects = await response.json();
+                const projectsContainer = document.querySelector('.row');
+
+                projects.forEach(project => {
+                    const projectDiv = document.createElement('div');
+                    projectDiv.className = 'col s12 m6';
+                    projectDiv.innerHTML = `
+                        <div class="project-tile">
+                            <a href="${project.link}" style="color: #16aaf2;">
+                                <img src="${project.imageUrl}">
+                                <h4>${project.name}</h4>
+                            </a>
+                            <p>${project.description}</p>
+                        </div>
+                    `;
+
+                    projectsContainer.appendChild(projectDiv);
+                });
+            } catch (error) {
+                console.error('Error loading projects:', error);
+            }
+        }
+
+        // Call the loadProjects function to load and display projects from projects.json
+        loadProjects();
+    </script>
 </body>
 </html>
