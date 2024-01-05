@@ -55,13 +55,16 @@
   </footer>
 
   <script>
-    // Function to generate a random color
+    // Function to generate a random color excluding white
     function getRandomColor() {
       const letters = '0123456789ABCDEF';
       let color = '#';
-      for (let i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
-      }
+      do {
+        color = '#';
+        for (let i = 0; i < 6; i++) {
+          color += letters[Math.floor(Math.random() * 16)];
+        }
+      } while (color === '#FFFFFF'); // Exclude white color
       return color;
     }
 
@@ -73,8 +76,11 @@
         // Select the container for repository cards
         const repoCards = document.getElementById('repo-cards');
 
+        // Filter out repositories with the name ".github"
+        const filteredRepos = repos.filter(repo => repo.name !== '.github');
+
         // Iterate through the repositories and create cards
-        repos.forEach(repo => {
+        filteredRepos.forEach(repo => {
           // Create card element
           const card = document.createElement('div');
           card.classList.add('col', 's12', 'm6');
