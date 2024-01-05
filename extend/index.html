@@ -58,6 +58,7 @@
     // Fetch repositories from GitHub API with the specified topics
     const topics = ['polyextended'];
     const poly = 'polyextended';
+
     fetch('https://api.github.com/users/polyextended/repos')
       .then(response => response.json())
       .then(repos => {
@@ -76,46 +77,29 @@
           const card = document.createElement('div');
           card.classList.add('card', 'mb-3');
 
-          // Include card header template
+          // Include card content
           card.innerHTML = `
-            <h3 class="card-header">${repo.name}</h3>
-            <div class="card-body">
-              <h5 class="card-title">Project For  ${poly}</h5>
-              <h6 class="card-subtitle text-muted"></h6>
-              <ul class="list-group">
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                  Stars
-                  <span class="badge bg-primary rounded-pill">${repo.stargazers_count}</span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                  Watchers
-                  <span class="badge bg-primary rounded-pill">${repo.watchers_count}</span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                  Forks
-                  <span class="badge bg-primary rounded-pill">${repo.forks_count}</span>
-                </li>
+            <div class="card-content">
+              <span class="card-title activator grey-text text-darken-4">${repo.name}<i class="material-icons right">more_vert</i></span>
+              <p>${repo.description || `Project For @PolyExtended${bsrp}`}</p>
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">${repo.name}<i class="material-icons right">close</i></span>
+              <ul>
+                <li>Stars: ${repo.stargazers_count}</li>
+                <li>Watchers: ${repo.watchers_count}</li>
+                <li>Forks: ${repo.forks_count}</li>
               </ul>
+              <a href="${repo.html_url}" class="btn">Link</a>
             </div>
-            <svg xmlns="http://www.w3.org/2000/svg" class="d-block user-select-none" width="100%" height="200"
-              aria-label="${repo.name}" focusable="false" role="img" preserveAspectRatio="xMidYMid slice"
-              viewBox="0 0 318 180" style="font-size:1.125rem;text-anchor:middle">
-              <rect width="100%" height="100%" fill="${randomColor()}"></rect>
-              <text x="50%" y="50%" fill="#dee2e6" dy=".3em">${repo.name}</text>
-            </svg>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">${repo.description || `Project For @PolyExtended${bsrp}`}</li>
-            </ul>
-            <div class="card-body">
-              <a href="${repo.html_url}" class="card-link">Link</a>
-            </div>
-            <div class="card-footer text-muted" id="repo-created-at-${repo.id}"></div>
           `;
 
           // Format and set the created_at timestamp using Moment.js
           const createdTimestamp = moment(repo.created_at).fromNow();
-          const createdAtElement = card.querySelector(`#repo-created-at-${repo.id}`);
+          const createdAtElement = document.createElement('div');
+          createdAtElement.classList.add('card-action', 'text-muted');
           createdAtElement.textContent = `Created ${createdTimestamp}`;
+          card.appendChild(createdAtElement);
 
           // Append the card to the container
           repoCards.appendChild(card);
