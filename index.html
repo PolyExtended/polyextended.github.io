@@ -89,7 +89,8 @@
         const repoCards = document.getElementById('repo-cards');
 
         // Filter out repositories with specific names
-        const filteredRepos = repos.filter(repo => !['.github', 'polyextended.github.io', 'PolyExtended'].includes(repo.name));
+        const excludedNames = ['.github', 'polyextended.github.io', 'PolyExtended'];
+        const filteredRepos = repos.filter(repo => !excludedNames.includes(repo.name));
 
         // Iterate through the repositories and create cards
         filteredRepos.forEach(repo => {
@@ -107,7 +108,7 @@
                 <p>${repo.description || `Project For @PolyExtended`}</p>
               </div>
               <div class="card-action">
-                <a href="${repo.html_url}" class="card-link">Link</a>
+                <a href="${repo.homepage || repo.html_url}" class="card-link">Link</a>
               </div>
             </div>
           `;
