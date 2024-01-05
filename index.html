@@ -55,7 +55,7 @@
   </footer>
 
   <script>
-    // Function to generate a random color excluding white
+    // Function to generate a random color excluding unreadable colors and white
     function getRandomColor() {
       const letters = '0123456789ABCDEF';
       let color = '#';
@@ -64,8 +64,20 @@
         for (let i = 0; i < 6; i++) {
           color += letters[Math.floor(Math.random() * 16)];
         }
-      } while (color === '#FFFFFF'); // Exclude white color
+      } while (isUnreadableColor(color) || color === '#FFFFFF'); // Exclude unreadable and white colors
       return color;
+    }
+
+    // Function to check if a color is unreadable
+    function isUnreadableColor(hexColor) {
+      // Check if the color is too bright (light text on light background) or too dark (dark text on dark background)
+      const rgb = parseInt(hexColor.substring(1), 16);
+      const r = (rgb >> 16) & 0xff;
+      const g = (rgb >>  8) & 0xff;
+      const b = (rgb >>  0) & 0xff;
+
+      const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+      return brightness > 200 || brightness < 50; // Modify these thresholds as needed
     }
 
     // Fetch repositories from PolyExtended GitHub organization
@@ -76,8 +88,8 @@
         // Select the container for repository cards
         const repoCards = document.getElementById('repo-cards');
 
-        // Filter out repositories with the name ".github"
-        const filteredRepos = repos.filter(repo => repo.name !== '.github');
+        // Filter out repositories with specific names
+        const filteredRepos = repos.filter(repo => !['.github', 'polyextended.github.io', 'PolyExtended'].includes(repo.name));
 
         // Iterate through the repositories and create cards
         filteredRepos.forEach(repo => {
